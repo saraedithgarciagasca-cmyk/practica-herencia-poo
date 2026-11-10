@@ -1,0 +1,41 @@
+Ejercicio 1 
+¿La salida coincide con la esperada? 
+Sí  
+¿Las clases hijas llaman a super().__init__()? 
+Sí, hereda atributos base del padre 
+
+¿BoletoEstudiante usa super() para calcular el precio? 
+Sí. Con super().calcular_precio() obtiene el precio normal ($90) y solo le resta el 30 %
+
+¿De qué clase heredó BoletoTerceraEdad y por qué? 
+De BoletoEstudiante, ya tenía hecho el cálculo del descuento, solo le cambié el descuento a 50 % y así no tuve que repetir la fórmula.
+
+Sugerencias de Copilot que rechazaron y por qué 
+Me sugirió poner return 90 * 0.7 y lo rechacé porque repetía el precio y la fórmula en vez de usar super(). 
+También me sugirió volver a escribir self.cliente y self.funcion, y lo rechacé porque eso ya lo hace el padre con super().__init__().
+
+Ejercicio 2 
+¿La salida coincide con la esperada?	Sí
+
+¿Las clases hijas llaman a super().__init__()?	
+Sí. EstanciaPension lo llama para poner las 24 horas. EstanciaNocturna no tiene constructor, así que usa el de Estancia.
+
+¿EstanciaNocturna usa super() para calcular el cobro?	
+Sí, usa super().cobrar() y nada más le suma los $50. 
+
+¿En qué clase escribieron la validación y por qué?	
+En el constructor de Estancia, porque todas las clases pasan por ahí. Así solo la escribí una vez y sirve para las tres. 
+
+
+PREGUNTAS DE COMPRENSIÓN  
+1. En cada ejercicio, ¿qué clase sobrescribe el cálculo reemplazándolo y cuál lo extiende con super()?
+En boletos, BoletoCortesia lo reemplaza porque siempre da $0, y BoletoEstudiante lo extiende porque usa super() y le resta el 30 %. En estacionamiento, EstanciaPension lo reemplaza porque siempre cobra $250, y EstanciaNocturna lo extiende porque usa super() y le suma $50.
+
+2. ¿Por qué ninguna clase hija necesita escribir ticket()?
+Porque lo heredan del padre. El formato es igual para todos y ticket() usa el cálculo de cada hija, así que solo cambia el precio.
+
+3. EstanciaPension no recibe horas en su constructor. ¿De dónde salen las 24 horas que aparecen en el ticket?
+De super().__init__(placa, horas=24) la hija le manda las 24 horas al constructor del padre y el padre las guarda.
+
+4. Si mañana la tarifa por hora sube a $25, ¿cuántas líneas hay que cambiar en su código? ¿Por qué?
+Solo una: TARIFA_HORA = 20 en Estancia. La fórmula está nada más ahí y EstanciaNocturna la usa con super(), así que el cambio también le llega.
