@@ -3,7 +3,7 @@ class Estancia:
     formato Placa (horas h): $cobro.
     Reto: con 0 horas o menos lanza ValueError."""
 
-    TARIFA_HORA = 20
+    TARIFA_HORA = 20 
 
     def __init__(self, placa, horas):
         if horas <= 0:
